@@ -1,0 +1,28 @@
+:root {
+    --main-color: blue;
+    --out-color: yellow;
+}
+
+.rand {
+    width: 100px;
+    height: 100px;
+    background-color: var(--main-color);
+    border-radius: 50px;
+    margin: 10px;
+    outline: 2px solid var(--out-color);
+}
+
+.elem {
+    width: 0px;
+    height: 0px;
+    background-image: url(https://images.pexels.com/photos/3716757/pexels-photo-3716757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+    background-size: cover;
+    min-width: auto;
+    min-height: auto;
+    flex-shrink: 0;
+    border-radius: 500px;
+    text-shadow: purple;
+    border: 0px solid #000; 
+    display: block;
+    margin: auto;
+}

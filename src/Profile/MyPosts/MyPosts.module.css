@@ -1,0 +1,16 @@
+.content {
+    grid-area: c;
+    background-color: hotpink;
+    margin-top: 10px;
+  }
+
+  .postBlock {
+    padding: 10px;
+  }
+  
+  .textarea {
+    background-color: rgb(172, 172, 197);
+    height: 100px;
+    width: 300px;
+  }
+
