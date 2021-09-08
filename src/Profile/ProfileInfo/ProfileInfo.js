@@ -18,7 +18,7 @@ const ProfileInfo = (props) => {
                 <h3>{props.profile.aboutMe}</h3>
                 <h3>{props.profile.lookingForAJobDescription}</h3>
                 <a href={props.profile.contacts.instagram}>instagram</a>
-                <h1>Aва + Тут мой мрофиль надо писать всякое!</h1>
+                <h1>Aва + Тут мой профиль надо писать всякое!</h1>
                 <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
             </div>
         </div>
