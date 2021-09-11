@@ -1,6 +1,36 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
+const validate = values => {
+    const errors = {}
+    if (!values.email) {
+        errors.email = 'Обязательное поле'
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Не корректно введен email'
+    }
+    if (!values.password) {
+        errors.password = 'Обязательное поле'
+    }
+    return errors
+}
+
+const renderField = ({
+    input,
+    label,
+    type,
+    meta: { touched, error, warning }
+}) => (
+    <div>
+        <label>{label}</label>
+        <div>
+            <input {...input} placeholder={label} type={type} />
+            {touched &&
+                ((error && <span>{error}</span>) ||
+                    (warning && <span>{warning}</span>))}
+        </div>
+    </div>
+)
+
 const Login = (props) => {
     const onSubmit = (formData) => {
         console.log(formData);
@@ -17,15 +47,17 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'Login'}
-                    component={'input'}
-                    name={'login'}
+                <Field name="email"
+                    type="email" 
+                    component={renderField}
+                    label="Email"
                 />
             </div>
             <div>
-                <Field placeholder={'Password'}
-                    component={'input'}
-                    name={'password'}
+                <Field name="password"
+                    type="password"
+                    component={renderField}
+                    label="Password"
                 />
             </div>
             <div>
@@ -42,8 +74,9 @@ const LoginForm = (props) => {
 }
 
 const LoginReduxForm = reduxForm({
-    form: 'login'
+    form: 'login',
+    validate
+    
 })(LoginForm)
-
 
 export default Login;
