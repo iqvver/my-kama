@@ -32,21 +32,18 @@ export const profileAPI = {
         return instance.get(`profile/status/` + userId);
     },
     updateStatus(status) {
-        return instance.put(`profile/status/`, { status: status });
+        return instance.put(`profile/status/`, { status });
     }
 }
 export const authAPI = {
    me() { 
-       return instance.get(`auth/me`)
-    }
-}
-
-export const LoginAPI = {
-    logIn(email, password, rememberMe) {
-    return instance.post(`auth/login`, {email: email}, {password: password}, {rememberMe: rememberMe})
+       return instance.get(`auth/me`);
     },
-    logOut(){
-        return instance.delete(`auth/login`)
+    login(email, password, rememberMe = false) {
+    return instance.post(`auth/login`, {email, password, rememberMe});
+    },
+    logout(){
+        return instance.delete(`auth/login`);
     }
 }
 
