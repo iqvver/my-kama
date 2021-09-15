@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import classes from './Profile.module.css'
-import Preloader from './../../components/common/preloader/Preloader'
 
 export default class ProfileStatus extends Component {
     state = {

@@ -4,13 +4,11 @@ import userPhoto from '../../assets/images/ava.jpg'
 import { NavLink, Redirect } from 'react-router-dom';
 
 let Users = (props) => {
-
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-
     return <div>
         <div className={styles.Page}>
             {pages.map(p => {
@@ -18,9 +16,7 @@ let Users = (props) => {
                     onClick={(e) => { props.onPageChanged(p); }}>{p}</span>
             })}
         </div>
-
-        {
-            props.users.map(u => <div key={u.id}>
+        { props.users.map(u => <div key={u.id}>
                 <span>
                     <div>
                         <NavLink to={'/profile/' + u.id}>
