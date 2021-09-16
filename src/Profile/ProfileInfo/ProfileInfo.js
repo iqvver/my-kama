@@ -4,7 +4,7 @@ import Preloader from './../../components/common/preloader/Preloader'
 import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
-    if (!props.profile) {
+    if (!props.profile && !props.isAuth) {
         return <Preloader />
     }
     return (
