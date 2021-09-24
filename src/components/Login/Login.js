@@ -8,7 +8,7 @@ import { Input } from '../common/FormsControls/FormsControls'
 import classes from '../common/FormsControls/FormsControls.module.css'
 
 const LoginForm = (props) => {
-    return (
+    return ( <>
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field placeholder={"Email"}
@@ -35,6 +35,10 @@ const LoginForm = (props) => {
                 <button>Login</button>
             </div>
         </form>
+        <form>
+        <button type="submit" formAction="https://social-network.samuraijs.com/signUp">Registration</button>
+    </form>
+    </>
     )
 }
 
