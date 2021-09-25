@@ -1,7 +1,8 @@
 import React from 'react'
-import classes from './Profile.module.css'
+import classes from './../Profile.module.css'
 import Preloader from './../../components/common/preloader/Preloader'
 import ProfileStatus from './ProfileStatus'
+import userPhoto from '../../assets/images/ava.jpg'
 
 const ProfileInfo = (props) => {
     if (!props.profile && !props.isAuth) {
@@ -13,7 +14,8 @@ const ProfileInfo = (props) => {
          </div>*/
         <div>
             <div className={classes.descriptionBlock}>
-                <img src={props.profile.photos.large} />
+                <img src={props.profile.photos.large != null ? props.user.photos.large : userPhoto}
+                    className={classes.userPhoto} />
                 <h2>{props.profile.fullName}</h2>
                 <h3>{props.profile.aboutMe}</h3>
                 <h3>{props.profile.lookingForAJobDescription}</h3>
