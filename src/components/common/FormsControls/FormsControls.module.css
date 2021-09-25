@@ -14,3 +14,8 @@
     padding: 5px;
     color: red;
 }
+
+.formControl textarea {
+    height: 100px;
+    width: 400px;
+}
