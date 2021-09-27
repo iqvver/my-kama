@@ -1,6 +1,7 @@
 import React from 'react'
-import Paginator from '../common/Paginator/Paginator';
-import User from './User';
+import Paginator from '../common/Paginator/Paginator'
+import PaginatorUi from '../common/Paginator/PaginatorUi'
+import User from './User'
 
 let Users = (props) => {
     return <>
