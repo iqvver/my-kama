@@ -1,9 +1,6 @@
 import * as React from 'react'
 import { FormGroup, FormControlLabel, Checkbox, styled, Button, Box, Switch, AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 
-
-
-
 const MyButton = styled(({ color, ...other }) => <Button {...other} />)({
     background: (props) =>
         props.color === 'red'
@@ -21,9 +18,9 @@ const MyButton = styled(({ color, ...other }) => <Button {...other} />)({
     margin: 8,
 });
 
-export default function AdaptingStyledComponents(props) {
-    const [auth, setAuth] = React.useState(true);
-    const [anchorEl, setAnchorEl] = React.useState(null);
+const Experiment = (props) => {
+    debugger;
+    const [isAuth, setAuth] = React.useState(true);
 
     const handleChange = (event) => {
         setAuth(event.target.checked);
@@ -37,33 +34,9 @@ export default function AdaptingStyledComponents(props) {
             <Button color="primary">Primary</Button>
             <Button disabled>Disabled</Button>
             <Button color="primary" href="#text-buttons">Link</Button>
-            <br></br>
+            <br />
             gd
-            <Box sx={{ flexGrow: 1 }}>
-                <FormGroup>
-                    <FormControlLabel
-                        control={
-                            <Switch
-                                checked={auth}
-                                onChange={handleChange}
-                                aria-label="login switch"
-                            />
-                        }
-                        label={auth ? 'Logout' : 'Login'}
-                    />
-                </FormGroup>
-            </Box>
         </React.Fragment>
     );
 }
-
-
-/*
-<FormGroup>
-  <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
-  <FormControlLabel control={<Checkbox />} label="Disabled" />
-</FormGroup>
-*/
-
-
-
+export default Experiment;
