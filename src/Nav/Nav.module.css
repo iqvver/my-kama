@@ -5,11 +5,11 @@
   }
 
   .item a {
-      color: white;
+      color: black;
       text-decoration: none;
   }
 
   .item a.activeLink {
-      color: yellow;
+      color: rgb(197, 51, 51);
   }
   

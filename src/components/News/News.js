@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import classes from './News.module.css';
-import { FormGroup, FormControlLabel, Box, Switch, } from '@material-ui/core';
+import * as React from 'react';
+import { Button, Paper, MenuList, MenuItem, Box } from '@material-ui/core';
 
-
-const News = (props) => {
+export default function MenuListComposition() {
     return (
-        <h1>vbxcv</h1>
+        <Box direction="row" spacing={2}>
+            <Paper>
+                News
+            </Paper>
+        </Box>
     );
 }
-export default News;

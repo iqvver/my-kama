@@ -6,6 +6,7 @@ import { login } from '../../redux/auth-reducer'
 import { required, emailValidate } from '../../utils/Validators/Validators'
 import { Input } from '../common/FormsControls/FormsControls'
 import classes from '../common/FormsControls/FormsControls.module.css'
+import { FormControlLabel, Switch, } from '@material-ui/core';
 
 const LoginForm = (props) => {
     return ( <>
@@ -31,9 +32,16 @@ const LoginForm = (props) => {
             { props.error && <div className={classes.formSummaryError}>
                 {props.error}
             </div>}
-            <div>
-                <button>Login</button>
-            </div>
+            
+            <FormControlLabel //переключение logIn, logAut
+                control={
+                    <Switch
+                        checked={props.isAuth}
+                        onChange={props.handleSubmit}
+                        aria-label="logIn switch"
+                    />}
+                    label={props.isAuth ? 'LogIn' : <div>LogIn</div>}
+            />
         </form>
         <form>
         <button type="submit" formAction="https://social-network.samuraijs.com/signUp">Registration</button>
