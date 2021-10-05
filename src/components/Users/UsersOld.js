@@ -2,6 +2,7 @@ import * as axios from 'axios'
 import React, { Component } from 'react'
 import styles from './users.module.css'
 import userPhoto from '../../assets/images/ava.jpg'
+import { Box } from '@mui/system'
 
 let Users = (props) => {
         let getUsers = () => {
@@ -11,33 +12,33 @@ let Users = (props) => {
                         });
                 }
         }
-        return <div>
+        return <Box>
                 <button onClick={getUsers}>GEtUsers</button>
                 {
-                        props.users.map(u => <div key={u.id}>
+                        props.users.map(u => <Box key={u.id}>
                                 <span>
-                                        <div>
+                                        <Box>
                                                 <img src={u.photos.small != null ? u.photos.small : userPhoto} className={styles.userPhoto} />
-                                        </div>
-                                        <div>
+                                        </Box>
+                                        <Box>
                                                 {u.followed ?
                                                         <button onClick={() => { props.unfollow(u.id) }}>unfollow</button>
                                                         :
                                                         <button onClick={() => { props.follow(u.id) }}>follow</button>
                                                 }
-                                        </div>
+                                        </Box>
                                 </span>
                                 <span>
-                                        <div>{u.name}</div>
-                                        <div>{u.status}</div>
+                                        <Box>{u.name}</Box>
+                                        <Box>{u.status}</Box>
                                 </span>
                                 <span>
-                                        <div>{'u.location.country'}</div>
-                                        <div>{'u.location.city'}</div>
+                                        <Box>{'u.location.country'}</Box>
+                                        <Box>{'u.location.city'}</Box>
                                 </span>
-                        </div>)
+                        </Box>)
                 }
-        </div>
+        </Box>
 }
 
 export default Users;

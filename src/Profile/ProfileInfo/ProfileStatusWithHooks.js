@@ -1,3 +1,4 @@
+import { Box } from '@mui/system';
 import React, { useState, useEffect } from 'react'
 import classes from './Profile.module.css'
 
@@ -20,22 +21,22 @@ const ProfileStatusWithHooks = (props) => {
         setStatus(e.currentTarget.value);
     }
     return (
-        <div> {!editMode &&
-            <div>
+        <Box> {!editMode &&
+            <Box>
                 <span onDoubleClick={activateMode}>
                     {props.status || '---'}
                 </span>
-            </div>
+            </Box>
         }
             {editMode &&
-                <div>
+                <Box>
                     <input onChange={onStatusChange}
                         onBlur={deactivateMode}
                         autoFocus={true}
                         value={status} />
-                </div>
+                </Box>
             }
-        </div>
+        </Box>
     )
 }
 export default ProfileStatusWithHooks;

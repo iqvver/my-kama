@@ -6,12 +6,15 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
 import {Provider} from 'react-redux';
+import StyledEngineProvider  from '@mui/styled-engine/StyledEngineProvider';
 
     ReactDOM.render(
+        <StyledEngineProvider injectFirst>
         <BrowserRouter>
             <Provider store={store}>
                 <App />
             </Provider>
-        </BrowserRouter>, document.getElementById('root'));
+        </BrowserRouter>
+        </StyledEngineProvider>, document.getElementById('root'));
 
 reportWebVitals();

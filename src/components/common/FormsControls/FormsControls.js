@@ -1,15 +1,16 @@
 import React from "react";
 import styles from "./FormsControls.module.css";
+import { Box } from '@material-ui/core';
 
 const FormControl = ({input, meta, child, ...props}) => {
     const hasError = meta.touched && meta.error;
     return (
-        <div className={styles.formControl + " " + (hasError ? styles.error : "")}>
-            <div>
+        <Box className={styles.formControl + " " + (hasError ? styles.error : "")}>
+            <Box>
                 {props.children}
-            </div>
+            </Box>
             { hasError && <span>{meta.error}</span> }
-        </div>
+        </Box>
     )
 }
 

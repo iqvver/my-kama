@@ -1,3 +1,4 @@
+import { Box } from '@mui/system'
 import React, { Component } from 'react'
 import classes from './Profile.module.css'
 
@@ -34,22 +35,22 @@ export default class ProfileStatus extends Component {
 
     render() {
         return (
-            <div>
+            <Box>
                 {!this.state.editMode &&
-                    <div>
+                    <Box>
                         <span onDoubleClick={this.activateEditMode}>
                             {this.props.status || '---'}</span>
-                    </div>
+                    </Box>
                 }
                 {this.state.editMode &&
-                    <div>
+                    <Box>
                         <input onChange={this.onStatusChange}
                             onBlur={this.deactivateEditMode}
                             autoFocus={true}
                             value={this.state.status} />
-                    </div>
+                    </Box>
                 }
-            </div>
+            </Box>
         )
     }
 }

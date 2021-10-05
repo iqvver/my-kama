@@ -1,3 +1,4 @@
+import { Box } from '@mui/system';
 import React from 'react'
 import classes from './Paginator.module.css'
 
@@ -8,12 +9,12 @@ let Paginator = (props) => {
         pages.push(i);
     }
     return (
-        <div className={classes.Page}>
+        <Box className={classes.Page}>
             {pages.map(p => {
                 return <span className={props.currentPage === p && classes.selectedPage}
                     onClick={(e) => { props.onPageChanged(p); }}>{p}</span>
             })}
-        </div>
+        </Box>
     )
 }
 

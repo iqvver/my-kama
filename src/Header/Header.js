@@ -2,19 +2,20 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import classes from './Header.module.css';
 import { FormControlLabel, Switch, } from '@material-ui/core';
+import { Box } from '@mui/system';
 
 const Header = (props) => {
     const [isAuth, setAuth] = React.useState(true);
     const handleChange = (event) => {
         setAuth(event.target.checked);
     };
-    return <header className={classes.header}>
+    return <Box className={classes.header}>
         <img className={classes.img} src="https://cdn.dribbble.com/users/1814782/screenshots/6504236/vp_logo.jpg" />
-        <div className={classes.logonBlock}>
-            <div className={classes.nameBlock}>
+        <Box className={classes.logonBlock}>
+            <Box className={classes.nameBlock}>
                 {props.isAuth
-                    ? <div>{props.login}</div>
-                    : <div></div>} </div>
+                    ? <Box>{props.login}</Box>
+                    : <Box></Box>} </Box>
             {props.isAuth ? <FormControlLabel  //переключение logIn, logAut
                 control={
                     <Switch
@@ -28,8 +29,8 @@ const Header = (props) => {
                     control={
                         <Switch />}
                     label="" />}
-        </div>
-    </header>
+        </Box>
+    </Box>
 }
 
 export default Header;

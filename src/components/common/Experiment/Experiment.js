@@ -1,5 +1,8 @@
 import * as React from 'react'
 import { FormGroup, FormControlLabel, Checkbox, styled, Button, Box, Switch, AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
+import Stack from '@mui/material/Stack';
+import LinearProgress from '@mui/material/LinearProgress'
+import CircularProgress from '@mui/material/CircularProgress';
 
 const MyButton = styled(({ color, ...other }) => <Button {...other} />)({
     background: (props) =>
@@ -28,6 +31,7 @@ const Experiment = (props) => {
     return (
         <React.Fragment>
             <MyButton color="red">Red</MyButton>
+            <LinearProgress />
             <MyButton color="blue">Blue</MyButton>
             <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
             <FormControlLabel disabled control={<Checkbox />} label="Disabled" />
@@ -36,6 +40,16 @@ const Experiment = (props) => {
             <Button color="primary" href="#text-buttons">Link</Button>
             <br />
             gd
+            <Stack sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
+                <LinearProgress color="secondary" />
+                <LinearProgress color="success" />
+                <LinearProgress color="inherit" />
+            </Stack>
+            <Stack sx={{ color: 'grey.500' }} spacing={2} direction="row">
+                <CircularProgress color="secondary" />
+                <CircularProgress color="success" />
+                <CircularProgress color="inherit" />
+            </Stack>
         </React.Fragment>
     );
 }

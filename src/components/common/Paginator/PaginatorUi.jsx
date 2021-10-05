@@ -2,6 +2,7 @@ import * as React from 'react';
 import classes from './Paginator.module.css'
 import { styled } from '@material-ui/core';
 import usePagination from '@mui/material/usePagination';
+import { Box } from '@mui/system';
 
 const List = styled('ul')({ //стиль пагинатора
   listStyle: 'none',
@@ -17,7 +18,7 @@ let PaginatorUi = ({ pageSize, onPageChanged, totalUsersCount }) => {
   });
 
   return ( //поведение пагинатора
-    <nav> 
+    <Box> 
       <List>
         {items.map(({ page, type, selected, ...item }, index) => {
           let children = null;
@@ -38,7 +39,7 @@ let PaginatorUi = ({ pageSize, onPageChanged, totalUsersCount }) => {
           return <li key={index} onClick={(e) => { onPageChanged(page); }}>{children}</li>; //событие нп нажатие кнопки
         })}
       </List>
-    </nav>
+    </Box>
   );
 }
 

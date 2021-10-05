@@ -1,3 +1,4 @@
+import { Box } from '@mui/system';
 import React, { Component } from 'react'
 import classes from './Music.module.css';
 
@@ -25,13 +26,13 @@ export default class Music extends Component {
         
         return (
             <>
-                <div>
+                <Box>
                     <button onClick={this.handleClick.bind(this)}>Жмак</button>
-                    <div>Ширина: {this.state.random}</div>
-                    <div>Высота: {this.state.random1}</div>
-                </div>
+                    <Box>Ширина: {this.state.random}</Box>
+                    <Box>Высота: {this.state.random1}</Box>
+                </Box>
 
-                <div id='elem' className={classes.elem}></div>
+                <Box id='elem' className={classes.elem}></Box>
 
                 
             

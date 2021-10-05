@@ -1,3 +1,4 @@
+import { Box } from '@mui/system';
 import React from 'react';
 import classes from './Post.module.css'
 
@@ -5,17 +6,17 @@ import classes from './Post.module.css'
 // super(props)
 // this.state = {
 //  quantity: '222'
-// } } <div>like: {this.state.quantity}</div>
+// } } <Box>like: {this.state.quantity}</Box>
 
 const Post1 = (props) => {
     return (
-        <div className={classes.item}>
+        <Box className={classes.item}>
             <img src='https://cs6.pikabu.ru/avatars/2097/x2097369-1271064885.png' />
             {props.message}
-            <div>
-                <span>Like</span> {props.quantity}
-            </div>
-        </div>
+            <Box>
+                <Box>Like</Box> {props.quantity}
+            </Box>
+        </Box>
     )
 }
 

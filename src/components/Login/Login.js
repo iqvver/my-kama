@@ -7,31 +7,32 @@ import { required, emailValidate } from '../../utils/Validators/Validators'
 import { Input } from '../common/FormsControls/FormsControls'
 import classes from '../common/FormsControls/FormsControls.module.css'
 import { FormControlLabel, Switch, } from '@material-ui/core';
+import { Box } from '@mui/system'
 
 const LoginForm = (props) => {
     return ( <>
         <form onSubmit={props.handleSubmit}>
-            <div>
+            <Box>
                 <Field placeholder={"Email"}
                     name={"email"}
                     validate={[emailValidate]}
                     component={Input} />
-            </div>
-            <div>
+            </Box>
+            <Box>
                 <Field placeholder={"Password"}
                     name={"password"}
                     validate={[required]}
                     component={Input}
                     type={"password"} />
-            </div>
-            <div>
+            </Box>
+            <Box>
                 <Field component={Input}
                     name={"rememberMe"}
                     type={"checkbox"} /> remember me
-            </div>
-            { props.error && <div className={classes.formSummaryError}>
+            </Box>
+            { props.error && <Box className={classes.formSummaryError}>
                 {props.error}
-            </div>}
+            </Box>}
             
             <FormControlLabel //переключение logIn, logAut
                 control={
@@ -40,7 +41,7 @@ const LoginForm = (props) => {
                         onChange={props.handleSubmit}
                         aria-label="logIn switch"
                     />}
-                    label={props.isAuth ? 'LogIn' : <div>LogIn</div>}
+                    label={props.isAuth ? 'LogIn' : <Box>LogIn</Box>}
             />
         </form>
         <form>
@@ -59,10 +60,10 @@ const Login = (props) => {
         return <Redirect to={"/profile"} />
     }
     return (
-        <div>
+        <Box>
             <h1>Login</h1>
             <LoginReduxForm onSubmit={onSubmit} />
-        </div>
+        </Box>
     )
 }
 const mapStateToProps = (state) => ({ isAuth: state.auth.isAuth })

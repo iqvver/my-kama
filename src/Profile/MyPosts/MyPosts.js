@@ -1,3 +1,4 @@
+import { Box } from '@mui/system'
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Textarea } from '../../components/common/FormsControls/FormsControls'
@@ -9,16 +10,16 @@ const maxLength10 = maxLengthCreator(10);
 const AddPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <div>
+            <Box>
                 <Field name='newPostText'
                     component={Textarea}
                     placeholder='Enter your message'
                     validate={[required, maxLength10]}
                 />
-            </div>
-            <div>
+            </Box>
+            <Box>
                 <button>Add Post</button>
-            </div>
+            </Box>
         </form>
     )
 }
@@ -35,15 +36,15 @@ const MyPosts = React.memo(props => {
     }
     
     return (
-        <div className={classes.postsBlock}>
+        <Box className={classes.postsBlock}>
             <h3>My posts</h3>
-            <div>
+            <Box>
                 <AddPostFormRedux onSubmit={addNewPost} />
-            </div>
-            <div className={classes.posts}>
+            </Box>
+            <Box className={classes.posts}>
                 {postsElements}
-            </div>
-        </div>
+            </Box>
+        </Box>
     )
 });
 

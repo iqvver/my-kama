@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { initializeApp } from "./redux/app-reducer"
 import { compose } from 'redux';
 import Preloader from './components/common/preloader/Preloader';
+import { Box } from '@mui/system';
+import LinearProgress from '@mui/material/LinearProgress'
 
 /* lazy off
 //import UsersContainer from './components/Users/UsersContainer';
@@ -39,22 +41,20 @@ class App extends Component {
     }
     return (
       //Не забыть сделать нормальную крутилку
-      <Suspense fallback={<div>Loading...</div>}> 
-        <div className='app-wrapper'>
+      <Suspense fallback={<Box><LinearProgress /></Box>}>
+        <Box className='app-wrapper'>
           <HeaderContainer />
           <Nav />
-          <div className='app-wrapper-content'>
-            <Suspense fallback={<div>Loading...</div>}>
-              <Route path='/dialogs' render={() => { return <DialogsContainer /> }} />
-              <Route path='/profile/:userId?' render={() => { return <ProfileContainer /> }} />
-              <Route path='/users' render={() => { return <UsersContainer /> }} />
-              <Route path='/login' render={() => { return <Login /> }} />
-              <Route path='/news' render={() => { return <News /> }} />
-              <Route path='/music' render={() => { return <Music /> }} />
-              <Route path='/setting' render={() => { return <Setting /> }} />
-            </Suspense>
-          </div>
-        </div>
+          <Box className='app-wrapper-content'>
+            <Route path='/dialogs' render={() => { return <DialogsContainer /> }} />
+            <Route path='/profile/:userId?' render={() => { return <ProfileContainer /> }} />
+            <Route path='/users' render={() => { return <UsersContainer /> }} />
+            <Route path='/login' render={() => { return <Login /> }} />
+            <Route path='/news' render={() => { return <News /> }} />
+            <Route path='/music' render={() => { return <Music /> }} />
+            <Route path='/setting' render={() => { return <Setting /> }} />
+          </Box>
+        </Box>
       </Suspense>
     )
   }

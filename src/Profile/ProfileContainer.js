@@ -5,6 +5,7 @@ import { getUserProfile, getStatus, updateStatus, savePhoto } from '../redux/pro
 import { withAuthRedirect } from '../Hoc/withAuthRedirect';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
+import { Box } from '@mui/system';
 
 class ProfileContainer extends Component {
     refreshProfile() {
@@ -28,13 +29,13 @@ class ProfileContainer extends Component {
     }
     render() {
         return (
-            <div>
+            <Box>
                 <Profile {...this.props} profile={this.props.profile}
                     isOwner={!!this.props.match.params.userId} //владелец страници или нет
                     status={this.props.status}
                     updateStatus={this.props.updateStatus}
                     savePhoto={this.props.savePhoto} />
-            </div>
+            </Box>
         )
     }
 }

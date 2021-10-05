@@ -5,6 +5,7 @@ import Message from "./Message/Message";
 import { Field, reduxForm } from 'redux-form';
 import { Textarea } from '../common/FormsControls/FormsControls';
 import { required, maxLengthCreator } from '../../utils/Validators/Validators';
+import { Box } from '@mui/system';
 
 const maxLength50 = maxLengthCreator(50);
 
@@ -17,32 +18,32 @@ const Dialogs = (props) => {
         props.sendMessage(value.newMessageBody);
     }
     return (
-        <div className={classes.dialogs}>
-            <div className={classes.dialogsItems}>
+        <Box className={classes.dialogs}>
+            <Box className={classes.dialogsItems}>
                 {dialogsElements}
-            </div>
-            <div className={classes.messages}>
-                <div>{messagesElements}</div>
-            </div>
-            <div>
+            </Box>
+            <Box className={classes.messages}>
+                <Box>{messagesElements}</Box>
+            </Box>
+            <Box>
                 <AddMessageFormRedux onSubmit={addNewMessage} />
-            </div>
-        </div>
+            </Box>
+        </Box>
     )
 }
 
     const AddMessageForm = (props) => {
         return (
             <form onSubmit={props.handleSubmit}>
-                <div>
+                <Box>
                     <Field name='newMessageBody'
                         component={Textarea}
                         placeholder='Enter your message' 
                         validate={[required, maxLength50]} />
-                </div>
-                <div>
+                </Box>
+                <Box>
                     <button>Send</button>
-                </div>
+                </Box>
             </form>
         )
     }
