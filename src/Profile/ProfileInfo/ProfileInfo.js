@@ -8,14 +8,22 @@ const ProfileInfo = (props) => {
     if (!props.profile && !props.isAuth) {
         return <Preloader />
     }
+
+    const onMainPhotoSelected = (e) => { //загрузка фото на сервер
+        if (e.target.files.length) {
+            props.savePhoto(e.target.files[0]);
+        }
+    }
+
     return (
         /*<div>
              <img className={classes.img} src='https://images.pexels.com/photos/7734954/pexels-photo-7734954.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' />
          </div>*/
         <div>
             <div className={classes.descriptionBlock}>
-                <img src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto}
+                <img src={props.profile.photos.large || userPhoto}
                     className={classes.userPhoto} />
+                {props.isOwner || <input type={'file'} onChange={onMainPhotoSelected} />}
                 <h2>{props.profile.fullName}</h2>
                 <h3>{props.profile.aboutMe}</h3>
                 <h3>{props.profile.lookingForAJobDescription}</h3>

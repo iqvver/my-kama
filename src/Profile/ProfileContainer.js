@@ -1,26 +1,39 @@
 import React, { Component } from 'react'
 import Profile from './Profile'
 import { connect } from 'react-redux';
-import { getUserProfile, getStatus, updateStatus } from '../redux/profile-reducer'
+import { getUserProfile, getStatus, updateStatus, savePhoto } from '../redux/profile-reducer'
 import { withAuthRedirect } from '../Hoc/withAuthRedirect';
 import { compose } from 'redux';
-import { withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class ProfileContainer extends Component {
-    componentDidMount() {
+    refreshProfile() {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.authorizedUserId;
+            if (!userId) {
+                this.props.history.push('/login');
+            }
         }
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);
+    }
+    componentDidMount() {
+        this.refreshProfile();
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.userId != prevProps.match.params.userId) {
+        this.refreshProfile();
+        }
     }
     render() {
         return (
             <div>
                 <Profile {...this.props} profile={this.props.profile}
+                    isOwner={!!this.props.match.params.userId} //владелец страници или нет
                     status={this.props.status}
-                    updateStatus={this.props.updateStatus} />
+                    updateStatus={this.props.updateStatus}
+                    savePhoto={this.props.savePhoto} />
             </div>
         )
     }
@@ -36,5 +49,5 @@ export default compose(
         getUserProfile,
         getStatus,
         updateStatus,
-    }), withRouter,withAuthRedirect
+        savePhoto }), withRouter, withAuthRedirect
 )(ProfileContainer);
