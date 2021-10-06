@@ -1,12 +1,14 @@
 import React, { Component, Suspense } from 'react'
 import { Route, withRouter } from 'react-router-dom';
 import './App.css';
+import classes from './App.css';
 import { connect } from 'react-redux';
 import { initializeApp } from "./redux/app-reducer"
 import { compose } from 'redux';
 import Preloader from './components/common/preloader/Preloader';
 import { Box } from '@mui/system';
 import LinearProgress from '@mui/material/LinearProgress'
+import { Paper } from '@material-ui/core';
 
 /* lazy off
 //import UsersContainer from './components/Users/UsersContainer';
@@ -42,7 +44,7 @@ class App extends Component {
     return (
       //Не забыть сделать нормальную крутилку
       <Suspense fallback={<Box><LinearProgress /></Box>}>
-        <Box className='app-wrapper'>
+        <Paper className='app-wrapper'>
           <HeaderContainer />
           <Nav />
           <Box className='app-wrapper-content'>
@@ -54,7 +56,7 @@ class App extends Component {
             <Route path='/music' render={() => { return <Music /> }} />
             <Route path='/setting' render={() => { return <Setting /> }} />
           </Box>
-        </Box>
+        </Paper>
       </Suspense>
     )
   }

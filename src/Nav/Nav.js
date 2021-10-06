@@ -6,7 +6,7 @@ import { Paper, MenuList, MenuItem, Box, Divider } from '@material-ui/core';
 export default class Nav extends Component {
     render() {
         return (
-            <Box className={classes.nav}>
+            <Paper className={classes.nav}>
                 <Box className={classes.item}>
                     <Paper elevation={16}>
                     <MenuList>
@@ -38,7 +38,7 @@ export default class Nav extends Component {
                     </MenuList>
                     </Paper>
                 </Box>
-            </Box>
+            </Paper>
         )
     }
 }

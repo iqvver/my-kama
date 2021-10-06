@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import classes from './Header.module.css';
-import { FormControlLabel, Switch, } from '@material-ui/core';
+import { FormControlLabel, Paper, Switch, } from '@material-ui/core';
 import { Box } from '@mui/system';
 
 const Header = (props) => {
@@ -9,7 +9,7 @@ const Header = (props) => {
     const handleChange = (event) => {
         setAuth(event.target.checked);
     };
-    return <Box className={classes.header}>
+    return <Paper className={classes.header}>
         <img className={classes.img} src="https://cdn.dribbble.com/users/1814782/screenshots/6504236/vp_logo.jpg" />
         <Box className={classes.logonBlock}>
             <Box className={classes.nameBlock}>
@@ -30,7 +30,7 @@ const Header = (props) => {
                         <Switch />}
                     label="" />}
         </Box>
-    </Box>
+    </Paper>
 }
 
 export default Header;

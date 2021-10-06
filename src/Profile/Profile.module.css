@@ -1,5 +1,44 @@
 .userPhoto {
     width: 300px;
     height: 300px;
-    border-radius: 0px;
+    border-radius: 10px;
+}
+.content {
+    grid-area: c;
+  }
+ 
+  .descriptionBlock {
+    padding: 0px;
+    margin: 0px;
+  }
+
+.inputFile {
+  color: transparent;
+  border-radius: 0px;
+}
+
+.infoBlock {
+  background-color: rgb(131, 111, 111);
+}
+
+.formControl.error input,
+.formControl.error textarea
+{
+    border: solid red 2px;
+}
+
+.formControl.error span
+{
+    color: red;
+}
+
+.formSummaryError {
+    border: red 1px solid;
+    padding: 5px;
+    color: red;
+}
+
+.formControl textarea {
+    height: 100px;
+    width: 400px;
 }

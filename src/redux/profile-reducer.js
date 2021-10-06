@@ -1,9 +1,11 @@
+import { stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
 
 const ADD_POST = 'PROFILE/ADD-POST';
 const SET_USER_PROFILE = 'PROFILE/SET_USER_PROFILE';
 const SET_STATUS = 'PROFILE/SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'PROFILE/SAVE_PHOTO_SUCCESS';
+const SAVE_PROFILE_SUCCESS = 'SAVE_PROFILE_SUCCESS';
 
 let initialState = {
     posts: [
@@ -42,10 +44,16 @@ const profileReducer = (state = initialState, action) => {
                 profile: action.profile
             };
 
-            case SAVE_PHOTO_SUCCESS:
+        case SAVE_PHOTO_SUCCESS:
             return {
                 ...state,
                 profile: { ...state.profile, photos: action.photos }
+            };
+
+        case SAVE_PROFILE_SUCCESS:
+            return {
+                ...state,
+                profile: { ...state.profile, data: action.data }
             };
 
         default:
@@ -56,6 +64,7 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = (newPostText) => ({ type: ADD_POST, newPostText })
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const savePhotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos })
+export const saveProfileSuccess = (profile) => ({ type: SAVE_PROFILE_SUCCESS, profile })
 
 export const getUserProfile = (userId) => async (dispatch) => {
     let response = await profileAPI.getProfile(userId);
@@ -75,6 +84,16 @@ export const savePhoto = (file) => async (dispatch) => { //санка загру
     let response = await profileAPI.savePhoto(file);
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos));
+    }
+}
+export const saveProfile = (profile) => async (dispatch, getState) => {
+    const userId = getState().auth.userId; //санка для обновления профиля
+    const response = await profileAPI.saveProfile(profile);
+    if (response.data.resultCode === 0) {
+        dispatch(getUserProfile(userId));
+     } else {
+        dispatch(stopSubmit('edit-profile', { _error: response.data.messages[0] }));
+        return Promise.reject(response.data.messages[0]);
     }
 }
 
