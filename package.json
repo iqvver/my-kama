@@ -2,7 +2,7 @@
   "name": "my-kama",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://iqvver.github.io/kama_demo",
+  "homepage": "http://iqvver.github.io/my-kama",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",

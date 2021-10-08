@@ -5,18 +5,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
-import {Provider} from 'react-redux';
-import StyledEngineProvider  from '@mui/styled-engine/StyledEngineProvider';
+import { Provider } from 'react-redux';
+import StyledEngineProvider from '@mui/styled-engine/StyledEngineProvider';
 import '@fontsource/roboto/500.css';
 
 
-    ReactDOM.render(
-        <StyledEngineProvider injectFirst>
-        <BrowserRouter>
+ReactDOM.render(
+    <StyledEngineProvider injectFirst>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Provider store={store}>
                 <App />
             </Provider>
         </BrowserRouter>
-        </StyledEngineProvider>, document.getElementById('root'));
+    </StyledEngineProvider>, document.getElementById('root'));
 
 reportWebVitals();
