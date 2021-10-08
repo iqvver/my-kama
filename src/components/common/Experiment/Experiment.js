@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FormGroup, FormControlLabel, Checkbox, styled, Button, Box, Switch, AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
+import { FormGroup, TextField, FormControlLabel, Checkbox, styled, Button, Box, Switch, AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress'
 import CircularProgress from '@mui/material/CircularProgress';
@@ -50,6 +50,23 @@ const Experiment = (props) => {
                 <CircularProgress color="success" />
                 <CircularProgress color="inherit" />
             </Stack>
+
+            <TextField
+                                        autoFocus
+                                        margin="dense"
+                                        id="name"
+                                        label="Email Alress"
+                                        type="email"
+                                        fullWidth
+                                    />
+                                    <TextField
+                                        margin="dense"
+                                        id="pass"
+                                        label="Password"
+                                        type="password"
+                                        fullWidth
+                                    />
+
         </React.Fragment>
     );
 }

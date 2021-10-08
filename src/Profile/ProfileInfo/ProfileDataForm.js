@@ -1,9 +1,11 @@
 import { Box } from '@mui/system';
-import React, { Component } from 'react'
+import * as React from 'react'
 import { Container } from '@mui/material'
 import classes from './../Profile.module.css'
 import { createField, Input, Textarea } from '../../components/common/FormsControls/FormsControls';
 import { reduxForm } from 'redux-form';
+import Stack from '@mui/material/Stack';
+import Alert from '@mui/material/Alert';
 
 
 const ProfileDataForm = ({ handleSubmit, profile, error }) => {
@@ -12,7 +14,9 @@ const ProfileDataForm = ({ handleSubmit, profile, error }) => {
             <Box>
                 {<button>save</button>}
             </Box>
-            {error && <Box className={classes.formSummaryError}>{error}</Box>}
+            <Stack sx={{ width: '100%' }} spacing={2}>
+                {error && <Alert variant="outlined" severity="error">{error}</Alert>}
+            </Stack>
             <Box className={classes.infoBlock}>
                 <h2>Полное имя: {createField('Full name', 'fullName', [], Input)}</h2>
                 <h3>Looking for a job: {createField('', 'lookingForAJob', [], Input, { type: 'checkbox' })}</h3>

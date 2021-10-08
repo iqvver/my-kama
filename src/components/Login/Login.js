@@ -6,48 +6,54 @@ import { login } from '../../redux/auth-reducer'
 import { required, emailValidate } from '../../utils/Validators/Validators'
 import { Input } from '../common/FormsControls/FormsControls'
 import classes from '../common/FormsControls/FormsControls.module.css'
-import { FormControlLabel, Switch, } from '@material-ui/core';
-import { Box } from '@mui/system'
+import { FormControlLabel, Checkbox, Box, Switch,} from '@material-ui/core';
+import TextField from '@mui/material/TextField';
+import { Paper } from '@mui/material'
 
 const LoginForm = (props) => {
-    return ( <>
-        <form onSubmit={props.handleSubmit}>
-            <Box>
-                <Field placeholder={"Email"}
-                    name={"email"}
-                    validate={[emailValidate]}
-                    component={Input} />
-            </Box>
-            <Box>
-                <Field placeholder={"Password"}
-                    name={"password"}
-                    validate={[required]}
-                    component={Input}
-                    type={"password"} />
-            </Box>
-            <Box>
-                <Field component={Input}
-                    name={"rememberMe"}
-                    type={"checkbox"} /> remember me
-            </Box>
-            { props.error && <Box className={classes.formSummaryError}>
-                {props.error}
-            </Box>}
-            
-            <FormControlLabel //переключение logIn, logAut
-                control={
-                    <Switch
-                        checked={props.isAuth}
-                        onChange={props.handleSubmit}
-                        aria-label="logIn switch"
-                    />}
+    return (<Paper>
+        <>
+            <form onSubmit={props.handleSubmit}>
+                <Box>
+                    <Field placeholder={"Email"}
+                        name={"email"}
+                        validate={[emailValidate]}
+                        component={Input}
+                    />
+                </Box>
+                <Box>
+                    <Field
+                        placeholder={"Password"}
+                        name={"password"}
+                        validate={[required]}
+                        component={Input}
+                        type={"password"}
+                    />
+                </Box>
+                <Box>
+                    <Field component={Input}
+                        name={"rememberMe"}
+                        type={"checkbox"} /> remember me
+                </Box>
+                {props.error && <Box className={classes.formSummaryError}>
+                    {props.error}
+                </Box>}
+
+                <FormControlLabel //переключение logIn, logAut
+                    control={
+                        <Switch
+                            checked={props.isAuth}
+                            onChange={props.handleSubmit}
+                            aria-label="logIn switch"
+                        />}
                     label={props.isAuth ? 'LogIn' : <Box>LogIn</Box>}
-            />
-        </form>
-        <form>
-        <button type="submit" formAction="https://social-network.samuraijs.com/signUp">Registration</button>
-    </form>
-    </>
+                />
+            </form>
+            <form>
+                <button type="submit" formAction="https://social-network.samuraijs.com/signUp">Registration</button>
+            </form>
+        </>
+    </Paper>
     )
 }
 
