@@ -4,10 +4,9 @@ import { Redirect } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
 import { login } from '../../redux/auth-reducer'
 import { required, emailValidate } from '../../utils/Validators/Validators'
-import { Input } from '../common/FormsControls/FormsControls'
+import { createField, Input } from '../common/FormsControls/FormsControls'
 import classes from '../common/FormsControls/FormsControls.module.css'
-import { FormControlLabel, Checkbox, Box, Switch,} from '@material-ui/core';
-import TextField from '@mui/material/TextField';
+import { FormControlLabel, Checkbox, Box, Switch, Divider, } from '@material-ui/core';
 import { Paper } from '@mui/material'
 
 const LoginForm = (props) => {
@@ -17,24 +16,33 @@ const LoginForm = (props) => {
                 <Box>
                     <Field placeholder={"Email"}
                         name={"email"}
+                        label='Email'
                         validate={[emailValidate]}
                         component={Input}
                     />
                 </Box>
+                <br />
                 <Box>
                     <Field
                         placeholder={"Password"}
                         name={"password"}
+                        label='Password'
                         validate={[required]}
                         component={Input}
                         type={"password"}
                     />
                 </Box>
                 <Box>
-                    <Field component={Input}
+                    <FormControlLabel
+                        control={
+                            <Checkbox defaultChecked />}
                         name={"rememberMe"}
-                        type={"checkbox"} /> remember me
+                        label="remember me" />
                 </Box>
+
+                {props.captchaUrl && <img src={props.captchaUrl} />}
+                {props.captchaUrl && createField('Введите символы с картинки', 'captcha', [required], Input, 'label' )}
+
                 {props.error && <Box className={classes.formSummaryError}>
                     {props.error}
                 </Box>}
@@ -60,7 +68,7 @@ const LoginForm = (props) => {
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe);
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha);
     }
     if (props.isAuth) {
         return <Redirect to={"/profile"} />
@@ -68,10 +76,13 @@ const Login = (props) => {
     return (
         <Box>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit} />
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
         </Box>
     )
 }
-const mapStateToProps = (state) => ({ isAuth: state.auth.isAuth })
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl,
+})
 
 export default connect(mapStateToProps, { login })(Login);

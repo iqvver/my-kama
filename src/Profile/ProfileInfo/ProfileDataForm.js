@@ -18,7 +18,7 @@ const ProfileDataForm = ({ handleSubmit, profile, error }) => {
                 {error && <Alert variant="outlined" severity="error">{error}</Alert>}
             </Stack>
             <Box className={classes.infoBlock}>
-                <h2>Полное имя: {createField('Full name', 'fullName', [], Input)}</h2>
+                <h2>Полное имя: {createField('Full name', 'fullName', [], Input, )}</h2>
                 <h3>Looking for a job: {createField('', 'lookingForAJob', [], Input, { type: 'checkbox' })}</h3>
                 <h3>My professional skills:{createField('Professional skills', 'lookingForAJobDescription', [], Textarea)}</h3>
                 <h3>About Me:{createField('About me', 'aboutMe', [], Textarea)}</h3>
@@ -31,7 +31,7 @@ const ProfileDataForm = ({ handleSubmit, profile, error }) => {
                     return (
                         <Container>
                             <Box>
-                                {key}: {createField(key, 'contacts.' + key, [], Input)}
+                                <br/> {createField(key, 'contacts.' + key, [], Input) }
                             </Box>
                         </Container>
                     )
