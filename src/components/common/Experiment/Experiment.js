@@ -52,20 +52,20 @@ const Experiment = (props) => {
             </Stack>
 
             <TextField
-                                        autoFocus
-                                        margin="dense"
-                                        id="name"
-                                        label="Email Alress"
-                                        type="email"
-                                        fullWidth
-                                    />
-                                    <TextField
-                                        margin="dense"
-                                        id="pass"
-                                        label="Password"
-                                        type="password"
-                                        fullWidth
-                                    />
+                autoFocus
+                margin="dense"
+                id="name"
+                label="Email Alress"
+                type="email"
+                fullWidth
+            />
+            <TextField
+                margin="dense"
+                id="pass"
+                label="Password"
+                type="password"
+                fullWidth
+            />
 
         </React.Fragment>
     );

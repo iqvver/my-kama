@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react'
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import classes from './App.css';
 import { connect } from 'react-redux';
@@ -36,18 +36,28 @@ const ProfileContainer = React.lazy(() => import('./Profile/ProfileContainer'))
 
 
 class App extends Component {
-  componentDidMount() { this.props.initializeApp(); }
+  catchAllUnhandledErrors = (reason, promise) => {
+    alert('Some error');
+  }
+  componentDidMount() {
+    this.props.initializeApp();
+    window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors);
+  }
   render() {
     if (!this.props.initialized) {
       return <Preloader />
     }
     return (
-      //Не забыть сделать нормальную крутилку
       <Suspense fallback={<Box><LinearProgress /></Box>}>
         <Paper className='app-wrapper'>
           <HeaderContainer />
           <Nav />
           <Box className='app-wrapper-content'>
+
+            <Redirect from="/" to="/profile" />
             <Route path='/dialogs' render={() => { return <DialogsContainer /> }} />
             <Route path='/profile/:userId?' render={() => { return <ProfileContainer /> }} />
             <Route path='/users' render={() => { return <UsersContainer /> }} />
@@ -55,6 +65,7 @@ class App extends Component {
             <Route path='/news' render={() => { return <News /> }} />
             <Route path='/music' render={() => { return <Music /> }} />
             <Route path='/setting' render={() => { return <Setting /> }} />
+
           </Box>
         </Paper>
       </Suspense>

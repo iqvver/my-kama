@@ -4,9 +4,9 @@ import { Redirect } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
 import { login } from '../../redux/auth-reducer'
 import { required, emailValidate } from '../../utils/Validators/Validators'
-import { createField, Input } from '../common/FormsControls/FormsControls'
+import { createField, Input, Sw } from '../common/FormsControls/FormsControls'
 import classes from '../common/FormsControls/FormsControls.module.css'
-import { FormControlLabel, Checkbox, Box, Switch, Divider, } from '@material-ui/core';
+import { FormControlLabel, Checkbox, Box, } from '@material-ui/core';
 import { Paper } from '@mui/material'
 
 const LoginForm = (props) => {
@@ -41,21 +41,14 @@ const LoginForm = (props) => {
                 </Box>
 
                 {props.captchaUrl && <img src={props.captchaUrl} />}
-                {props.captchaUrl && createField('Введите символы с картинки', 'captcha', [required], Input, 'label' )}
+                {props.captchaUrl && createField('Введите символы с картинки', 'captcha', [required], Input, 'label')}
 
                 {props.error && <Box className={classes.formSummaryError}>
                     {props.error}
                 </Box>}
-
-                <FormControlLabel //переключение logIn, logAut
-                    control={
-                        <Switch
-                            checked={props.isAuth}
-                            onChange={props.handleSubmit}
-                            aria-label="logIn switch"
-                        />}
-                    label={props.isAuth ? 'LogIn' : <Box>LogIn</Box>}
-                />
+                <Box>
+                    <button>Login</button>
+                </Box>
             </form>
             <form>
                 <button type="submit" formAction="https://social-network.samuraijs.com/signUp">Registration</button>

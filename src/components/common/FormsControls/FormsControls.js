@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./FormsControls.module.css";
 import { Box } from '@material-ui/core';
 import { Field } from "redux-form";
-import { TextareaAutosize, TextField } from "@mui/material";
+import { TextareaAutosize, TextField, Switch } from "@mui/material";
 
 const FormControl = ({ input, meta, child, ...props }) => {
     const hasError = meta.touched && meta.error;
@@ -24,6 +24,10 @@ export const Textarea = (props) => {
 export const Input = (props) => {
     const { input, meta, child, ...restProps } = props;
     return <FormControl {...props}><TextField {...input} {...restProps} /></FormControl>
+}
+export const Checkbox = (props) => {
+    const { input, meta, child, ...restProps } = props;
+    return <FormControl {...props}><Checkbox {...input} {...restProps} /></FormControl>
 }
 export const createField = (placeholder, name, validators, component, props = {}, label) => (
     <div>

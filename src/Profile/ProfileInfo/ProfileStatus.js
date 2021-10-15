@@ -26,11 +26,10 @@ export default class ProfileStatus extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.status !== this.props.status) {
-        this.setState({
-            status: this.props.status
-        });
-    }
-        console.log('componentDidUpdate')
+            this.setState({
+                status: this.props.status
+            });
+        }
     }
 
     render() {
